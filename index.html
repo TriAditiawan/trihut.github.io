@@ -22,7 +22,7 @@
       }
 
       .carousel {
-        margin-top: 65px;
+        margin-top: 55px;
       }
       .nav-link {
         color: white !important;
@@ -31,9 +31,18 @@
         color: red !important;
       }
       .navbar-brand {
-        font-size: 28px;
-        font-weight: 500;
+        font-size: 18px;
         text-transform: uppercase;
+      }
+      @media (min-height: 997px) {
+        .navbar-brand {
+          font-size: 28px;
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+        .carousel {
+          margin-top: 65px;
+        }
       }
     </style>
   </head>
@@ -111,11 +120,11 @@
           // console.log(menu);
           $.each(menu, function (i, data) {
             $("#data-menu").append(
-              '<div class="col-md-4 mb-3"><div class="card"><img src="./img/menu/' +
+              '<div class="media col-4 mb-3" ><div class="card" ><img src="./img/menu/' +
                 data.gambar +
                 '" class="card-img-top"/><div class="card-body"><h5 class="card-title">' +
                 data.nama +
-                '</h5><p class="card-text">' +
+                '</h5><p class="card-text ">' +
                 data.deskripsi +
                 '</p><h5 class="card-text">' +
                 data.harga +
@@ -141,11 +150,11 @@
           $.each(menu, function (i, data) {
             if (data.kategori == kategori.toLocaleLowerCase()) {
               content +=
-                '<div class="col-md-4 mb-3"><div class="card"><img src="./img/menu/' +
+                '<div class="media col-4 mb-3" ><div class="card" ><img src="./img/menu/' +
                 data.gambar +
                 '" class="card-img-top"/><div class="card-body"><h5 class="card-title">' +
                 data.nama +
-                '</h5><p class="card-text">' +
+                '</h5><p class="card-text ">' +
                 data.deskripsi +
                 '</p><h5 class="card-text">' +
                 data.harga +
@@ -155,6 +164,18 @@
           $("#data-menu").html(content);
         });
       });
+      function myFunction(x) {
+        if (x.matches) {
+          // If media query matches
+          $(".media").addClass("col-6");
+          $(this).removeClass("col-4");
+        } else {
+        }
+      }
+
+      var x = window.matchMedia("(max-width: 700px)");
+      myFunction(x); // Call listener function at run time
+      x.addListener(myFunction); // Attach listener function on state changes
     </script>
   </body>
 </html>
